@@ -1,0 +1,91 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        div {
+            margin: 150px 550px 210px;
+            font-size: 20px;
+            background-color: rgb(211, 222, 228);
+            border-radius: 5px;
+        }
+
+        p {
+            color: red;
+        }
+
+        input[type=text] {
+            height: 40px;
+            width: 350px
+        }
+
+        input[type=password] {
+            height: 40px;
+            width: 350px;
+        }
+
+        input[type=submit] {
+            height: 50px;
+            width: 100px;
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+        }
+
+        input[type=submit]:hover {
+            background-color: greenyellow;
+            color: black;
+        }
+    </style>
+</head>
+
+<body  style="background-image: url(https://th.bing.com/th/id/OIP.2ii6tmkmIVOzXVAIHwY2wAHaEo?w=221&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7);
+background-repeat: no-repeat, no-repeat;
+background-size: 100% 100%;">
+    <p> MY BRAND SALE</p>
+
+    <center>
+        <div>
+        <form>
+            <h1>log in</h1>
+            <input type="text" placeholder="UserName" max="20px"><br>
+            <br>
+            <input type="password" placeholder="Password"><br>
+            <span style="color: red;display: none;">Invalid User name or Password</span>
+            <input type="submit" value="login">
+        </form>
+    </div>
+    </center>
+    <script>
+        let getp = document.querySelector("p");
+        getp.style.textAlign = "center";
+        getp.style.color = "red";
+        getp.style.fontSize = "40px";
+        console.log(getp);
+        console.log(document.forms[0]);
+        document.forms[0].addEventListener("submit", function (event) {
+            event.preventDefault();
+            console.log("success");
+            console.log(event);
+            console.log(event.target[0].value);
+            console.log(event.target[1].value);
+            let user = event.target[0].value;
+            let pass1 = event.target[1].value;
+            if (pass1.length==8) {
+                alert("login successful!")
+                window.open("Home.html", "_self");
+
+            } else {
+                alert("Invalid User Name or Password");
+                let span1=document.querySelector("span");
+                span1.style.display="block";
+                event.target[1].style.border="1px solid red";
+            }
+        })
+
+    </script>
+</body>
+
+</html>

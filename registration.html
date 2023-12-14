@@ -1,0 +1,179 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        form {
+            margin: 100px 400px;
+            background-color: rgb(191, 209, 224);
+            border-radius: 5px;
+        }
+
+        body {
+            background-image: url(https://th.bing.com/th/id/OIP.Y74kNIhWkZhW9BhGMaEvVQHaEo?w=313&h=195&c=7&r=0&o=5&dpr=1.3&pid=1.7);
+            background-repeat: no-repeat, no-repeat;
+            background-size: 100% 100%;
+            /* background-color: blue;*/
+        }
+
+        input[type=text] {
+            height: 40px;
+            width: 350px;
+        }
+
+        input[type=password] {
+            height: 40px;
+            width: 350px;
+        }
+
+        input[type=date] {
+            height: 40px;
+            width: 250px;
+        }
+
+        input[type=submit] {
+            height: 50px;
+            width: 100px;
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+        }
+
+        input[type=email] {
+            height: 40px;
+            width: 350px;
+
+        }
+
+        input[type=submit]:hover {
+            background-color: greenyellow;
+            color: black;
+        }
+
+        span {
+            color: red;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <p> MY BRAND SALE</p>
+
+    <center>
+        <div id="form1">       
+             <form style="font-size: 20px;">
+            <h1>Registration</h1>
+            <input type="text" placeholder="User Name" id="username" required><br>
+            <span style="color: red;display: none;">User Name must have more than 12 characters and start with
+                Uppercase</span>
+            <br>
+            <input type="password" placeholder="Create password" id="createpassword"><br>
+            <p id="cp" style="color: red;display: none;">Password Containing 8 characters</p>
+            <br>
+            <input type="password" placeholder="Conform Password" id="conformpassword"><br>
+            <span id="hi" style="color: red;display: none;">Password are not matching</span>
+            <br>
+            DOB:<input type="date"><br>
+            <br>
+            <input type="email" placeholder="Enter your email"><br>
+            <p id="mail" style="color: red;display: none;">Please enter valid email for example abc@gmail.com</p>
+            <br>
+            <input type="text" placeholder="Mobile number" maxlength="10"><br>
+            <p id="number" style="color: red;display: none;">Mobile number must contain 10 digits and indian number is
+                valid only.</p>
+
+            <br>
+            <input type="checkbox" required>I accept all terms & conditions<br>
+            <br>
+            <input type="submit" value="Register">
+            <input type="submit" value="Reset">
+        </form></div>
+
+    </center>
+    <script>
+        let getp = document.querySelector("p");
+        getp.style.textAlign = "center";
+        getp.style.color = "red";
+        getp.style.fontSize = "40px";
+        console.log(getp);
+        console.log(document.forms[0]);
+        document.forms[0].addEventListener("submit", function (event) {
+            event.preventDefault();
+            console.log("success");
+            console.log(event);
+            console.log(event.target[0].value);
+            console.log(event.target[1].value);
+            console.log(event.target[2].value);
+            console.log(event.target[3].value);
+            console.log(event.target[4].value);
+            console.log(event.target[5].value);
+            console.log(event.target[6].value);
+            console.log(event.target[7].value);
+            console.log(event.target[8].value);
+
+
+            let user = event.target[0].value;
+            let pass1 = event.target[1].value;
+            let pass2 = event.target[2].value;
+            let dob = event.target[3].value;
+            let email = event.target[4].value;
+            let ph = event.target[5].value;
+            let con = event.target[6].value;
+            let sub = event.target[7].value;
+            let reset1 = event.target[8].value;
+            //enter user name with lenth 12 and start with D
+            if (user.length >= 12 && user[0] == "D") {
+                var s = document.querySelector("span");
+                s.style.display = "none";
+                event.target[0].style.border = "2px solid green";
+            } else {
+                alert("Please fill properly");
+                var s = document.querySelector("span");
+                s.style.display = "block";
+                event.target[0].style.border = "1px solid red";
+
+            }
+            //create a password length is equal to 8 other wise else condition return
+            if (pass1.length == 8) {
+                p1 = document.getElementById("cp");
+                p1.style.display = "none";
+                event.target[1].style.border = "2px solid green";
+            } else {
+                p1 = document.getElementById("cp");
+                p1.style.display = "block";
+                event.target[1].style.border = "1px solid red";
+            }
+            //here check both create password and conform is equal or not
+            if (pass1 == pass2) {
+                p2 = document.getElementById("hi");
+                p2.style.display = "none";
+                event.target[2].style.border = "2px solid green";
+
+            } else {
+                p2 = document.getElementById("hi");
+                p2.style.display = "block";
+                event.target[2].style.border = "1px solid red"
+            }
+            //check mobile have 10 digits and also indian number
+            if (ph[0] == 9 || ph[0] == 8 || ph[0] == 7 || ph[0] == 6) {
+                alert("Registration successful!");
+                window.open("login.html","_self");
+                ph1 = document.getElementById("number");
+                ph1.style.display = "none";
+                event.target[4].style.border = "2px solid green";
+            } else {
+                ph1 = document.getElementById("number");
+                ph1.style.display = "block";
+                event.target[4].style.border = "1px solide red"
+            }
+        })
+        localStorage.setItem("reg",JSON.stringify(form1));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>over view about </title>
+    <style>
+        li{
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body style="background-image: url(https://th.bing.com/th/id/OIP.IrkvVwW-e_a-R4tS7IwyqwAAAA?pid=ImgDet&w=203&h=206&c=7&dpr=1.3);
+background-repeat: no-repeat, no-repeat;
+background-size: 100% 100%;">
+        <center><img src="" alt="">
+        <li></li>
+        <li></li>
+        <li></li>
+    <li></li>
+    </center>
+    <center>
+        <form>
+            <input type="submit" value="Back">
+        </form>
+    </center>
+    <script>
+        console.log(document.forms[0]);
+        document.forms[0].addEventListener("submit", function (event) {
+            event.preventDefault();
+            window.open("project.html","_self")
+        });
+        var datagetting = localStorage.getItem("all");
+        console.log();
+        let datagettings = JSON.parse(datagetting);
+        console.log(datagettings);
+        let lists = document.querySelectorAll("li");
+        let img = document.querySelector("img");
+        img.setAttribute("src", datagettings["image"])
+        img.style.width = "200px";
+        img.style.height = "200px";
+
+        lists[0].innerText = datagettings["id"];
+        lists[1].innerText = datagettings["category"];
+        lists[2].innerText = datagettings["description"];
+        lists[3].innerText = datagettings["price"];
+
+        
+
+    </script>
+</body>
+
+</html>
